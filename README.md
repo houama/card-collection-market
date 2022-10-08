@@ -36,4 +36,4 @@ npm run dev
 
 and access the web application through localhost:
 
-[localhost](http://localhost:3000)
+[`localhost`](http://localhost:3000)
