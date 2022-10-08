@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import Router from "next/router";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 export default function Home() {
   const [collectionList, setCollectionList] = useState([]);
@@ -50,7 +51,7 @@ export default function Home() {
             collectionList.map((data, index) => {
               return (
                 <div
-                  className={styles.card}
+                  className={styles.cardCollection}
                   onClick={() => {
                     Router.push("/bolafy/collection-detail");
                   }}
@@ -59,7 +60,12 @@ export default function Home() {
                     <h4>
                       <b>{data.collection_name}</b>
                     </h4>
-                    <p>See card inside collection</p>
+                    <div className={styles.cardDescription}>
+                      <p>See collection's card</p>
+                      <span className={styles.arrowRight}>
+                        <FaArrowCircleRight />
+                      </span>
+                    </div>
                   </div>
                 </div>
               );

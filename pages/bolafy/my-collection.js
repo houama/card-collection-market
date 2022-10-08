@@ -37,7 +37,7 @@ export default function MyCollection() {
         {cardList &&
           cardList.map((data, index) => {
             return (
-              <div className={styles.card}>
+              <div className={styles.cardMyCollection}>
                 <img
                   className={styles.cardImage}
                   src={data.img}
