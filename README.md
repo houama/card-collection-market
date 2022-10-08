@@ -62,3 +62,5 @@ and access the web application through localhost:
 
 - Get all collection : `/api/v1/collection`
 - Get all collection's card (2 random card) : `/api/v1/card`
+- Get all my collection (purchased card) : `/api/v1/card/myCollection`
+- Purchase card : `/api/v1/purchase/{id}`
