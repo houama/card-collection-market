@@ -18,15 +18,14 @@ class CardModel {
 
   static async purchase(_id) {
     try {
-      // flag the sold as true (1)
-      console.log(_id);
-      await Card.update({
-        sold: true,
-        where: { id: _id },
-      }).then(() => {
-        console.log("sucess");
-        return Card.findById(_id);
-      });
+      // flag the sold as true
+      const purchaseCard = await Card.update(
+        { sold: true },
+        {
+          where: { id: _id },
+        }
+      );
+      return purchaseCard;
     } catch (error) {
       console.error(error);
     }
