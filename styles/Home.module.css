@@ -129,6 +129,34 @@
   object-fit: cover;
 }
 
+.gridWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-width: 100%;
+}
+
+.homeWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.buttonCollection {
+  display: block;
+  width: 250px;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px;
+  color: darkblue;
+  background-color: white;
+  border: 2px solid darkblue;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
 /* The Modal (background) */
 .h1 {
   text-align: center;

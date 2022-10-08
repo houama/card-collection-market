@@ -6,6 +6,7 @@ class CardModel {
     try {
       // Get 2 random data
       const cardData = await Card.findAll({
+        where: { sold: false },
         order: [[Sequelize.fn("RAND")]],
         limit: 2,
       });
@@ -26,6 +27,19 @@ class CardModel {
         }
       );
       return purchaseCard;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  static async getMyCollection() {
+    try {
+      // Get card that already sold (bought)
+      const cardData = await Card.findAll({
+        where: { sold: true },
+      });
+
+      return cardData;
     } catch (error) {
       console.error(error);
     }

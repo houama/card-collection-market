@@ -12,24 +12,24 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    // await queryInterface.bulkInsert(
-    //   "Collection",
-    //   [
-    //     {
-    //       id: "b3eaf3fb-1918-4190-8df0-5cb4120ed285",
-    //       collection_name: "Collection A",
-    //     },
-    //     {
-    //       id: "c3f80e33-3446-40b9-bff3-a3164543db39",
-    //       collection_name: "Collection B",
-    //     },
-    //     {
-    //       id: "4b0d958a-f63f-47b7-8a35-a0f295bf95f1",
-    //       collection_name: "Collection C",
-    //     },
-    //   ],
-    //   {}
-    // );
+    await queryInterface.bulkInsert(
+      "Collection",
+      [
+        {
+          id: "b3eaf3fb-1918-4190-8df0-5cb4120ed285",
+          collection_name: "Collection A",
+        },
+        {
+          id: "c3f80e33-3446-40b9-bff3-a3164543db39",
+          collection_name: "Collection B",
+        },
+        {
+          id: "4b0d958a-f63f-47b7-8a35-a0f295bf95f1",
+          collection_name: "Collection C",
+        },
+      ],
+      {}
+    );
 
     await queryInterface.bulkInsert(
       "Card",

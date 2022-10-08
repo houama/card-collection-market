@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
-import Router from "next/router"
+import Router from "next/router";
 
 export default function Home() {
   const [collectionList, setCollectionList] = useState([]);
@@ -35,21 +35,37 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        {collectionList.length !== 0 &&
-          collectionList.map((data, index) => {
-            return (
-              <div className={styles.card} onClick={() => {Router.push("/bolafy/collection-detail")}}>
-                <div className={styles.container}>
-                  <h4>
-                    <b>{data.collection_name}</b>
-                  </h4>
-                  <p>See card inside collection</p>
+      <div className={styles.homeWrapper}>
+        <button
+          className={styles.buttonCollection}
+          onClick={() => {
+            Router.push("/bolafy/my-collection");
+          }}
+        >
+          See your collection
+        </button>
+
+        <main className={styles.main}>
+          {collectionList.length !== 0 &&
+            collectionList.map((data, index) => {
+              return (
+                <div
+                  className={styles.card}
+                  onClick={() => {
+                    Router.push("/bolafy/collection-detail");
+                  }}
+                >
+                  <div className={styles.container}>
+                    <h4>
+                      <b>{data.collection_name}</b>
+                    </h4>
+                    <p>See card inside collection</p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-      </main>
+              );
+            })}
+        </main>
+      </div>
 
       <footer className={styles.footer}>
         <a
