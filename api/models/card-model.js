@@ -15,6 +15,22 @@ class CardModel {
       console.error(error);
     }
   }
+
+  static async purchase(_id) {
+    try {
+      // flag the sold as true (1)
+      console.log(_id);
+      await Card.update({
+        sold: true,
+        where: { id: _id },
+      }).then(() => {
+        console.log("sucess");
+        return Card.findById(_id);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 module.exports = CardModel;

@@ -31,6 +31,23 @@ export default function CollectionDetail() {
     openModal(!modal);
   };
 
+  const handlePurchaseCard = (id) => {
+    axios
+      .patch(`/api/v1/card/purchase/${id}`)
+      .then(function (response) {
+        // handle success
+        console.log(response);
+        setCardList(response.data.results);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        Router.push("/");
+      });
+  };
+
   return (
     <div>
       <Head>
@@ -40,10 +57,13 @@ export default function CollectionDetail() {
       </Head>
 
       <main className={styles.main}>
-        {cardList.length !== 0 &&
+        {cardList &&
           cardList.map((data, index) => {
             return (
-              <div className={styles.card} onClick={() => handleModal()}>
+              <div
+                className={styles.card}
+                onClick={() => handlePurchaseCard(data.id)}
+              >
                 <img
                   className={styles.cardImage}
                   src={data.img}
@@ -61,12 +81,20 @@ export default function CollectionDetail() {
       </main>
 
       {modal && (
-        // <div className={styles.modal}>
-        //   <div className={styles.modalContent}>
-        //     <p>Some text in the Modal..</p>
+        // <div className={styles.overlay}>
+        //   <div className={styles.popup}>
+        //     <h2>Here i am</h2>
+        //     <a className={styles.close} href="#">
+        //       &times;
+        //     </a>
+        //     <div className={styles.content}>
+        //       Are you sure want to buy this card?
+        //     </div>
         //   </div>
         // </div>
-        <p>Testtt</p>
+        <div className={styles.overlay}>
+          <h1>Here</h1>
+        </div>
       )}
 
       <footer className={styles.footer}>

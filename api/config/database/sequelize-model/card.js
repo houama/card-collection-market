@@ -23,6 +23,10 @@ module.exports = (sequelize, type) => {
       img: {
         type: type.STRING,
       },
+      sold: {
+        type: type.BOOLEAN,
+        defaultValue: 0,
+      },
       created_date: {
         type: "TIMESTAMP",
         defaultValue: type.NOW,
