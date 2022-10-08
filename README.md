@@ -5,9 +5,23 @@ This is a take home coding test for moflip
 Tech stack:
 
 - Node JS
-- Next JS (fullstack framework)
+- Next JS (fullstack framework for React JS)
 - Express JS (custom server)
 - MySQL (database)
+- Sequelize (SQL ORM)
+
+## Project structure (main)
+
+```bash
+.
+├── api                      # Contains api configuration using MVC architecture
+├── pages                    # Frontend folder that contains all pages in the app
+├── seeders                  # Dummy data (seeder) for inserting to database
+├── styles                   # Styling code for the frontend
+├── app.env                  # Environment variable
+├── global.config.js         # Configuration file that export the env variable
+└── server.js                # File to starting the server
+```
 
 ## How to start
 
@@ -39,3 +53,8 @@ npm run dev
 and access the web application through localhost:
 
 [`localhost`](http://localhost:3000)
+
+## Endpoint
+
+- Get all collection : `/api/v1/collection`
+- Get all collection's card (2 random card) : `/api/v1/card`
