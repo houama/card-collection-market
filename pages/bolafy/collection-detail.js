@@ -1,20 +1,22 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import axios from "axios";
-import Router from "next/router"
+import Router from "next/router";
+import numeral from "numeral";
 
-export default function Home() {
-  const [collectionList, setCollectionList] = useState([]);
+export default function CollectionDetail() {
+  const [cardList, setCardList] = useState([]);
+  const [modal, openModal] = useState(false);
 
   useEffect(() => {
     axios
-      .get("/api/v1/collection")
+      .get("/api/v1/card")
       .then(function (response) {
         // handle success
         console.log(response);
-        setCollectionList(response.data.results);
+        setCardList(response.data.results);
       })
       .catch(function (error) {
         // handle error
@@ -25,7 +27,9 @@ export default function Home() {
       });
   }, []);
 
-  console.log(collectionList);
+  const handleModal = () => {
+    openModal(!modal);
+  };
 
   return (
     <div>
@@ -36,20 +40,34 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        {collectionList.length !== 0 &&
-          collectionList.map((data, index) => {
+        {cardList.length !== 0 &&
+          cardList.map((data, index) => {
             return (
-              <div className={styles.card} onClick={() => {Router.push("/bolafy/collection-detail")}}>
+              <div className={styles.card} onClick={() => handleModal()}>
+                <img
+                  className={styles.cardImage}
+                  src={data.img}
+                  alt="Avatar"
+                ></img>
                 <div className={styles.container}>
                   <h4>
-                    <b>{data.collection_name}</b>
+                    <b>{data.card_name}</b>
                   </h4>
-                  <p>See card inside collection</p>
+                  <p>Rp. {numeral(data.price).format("0,0")}</p>
                 </div>
               </div>
             );
           })}
       </main>
+
+      {modal && (
+        // <div className={styles.modal}>
+        //   <div className={styles.modalContent}>
+        //     <p>Some text in the Modal..</p>
+        //   </div>
+        // </div>
+        <p>Testtt</p>
+      )}
 
       <footer className={styles.footer}>
         <a
