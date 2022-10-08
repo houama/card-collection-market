@@ -44,7 +44,11 @@ Second, please migrate the seeder to the database so this project can working we
 npx sequelize db:seed:all
 ```
 
-Third, please running development server:
+Third, please install dependency and running development server:
+
+```bash
+npm install
+```
 
 ```bash
 npm run dev
